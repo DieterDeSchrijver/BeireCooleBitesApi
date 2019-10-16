@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using BeireCooleBitesApi.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace BeireCooleBitesApi.Controllers
 {
@@ -19,12 +20,14 @@ namespace BeireCooleBitesApi.Controllers
             _dayRepo = new DayRepo();
         }
 
+        [EnableCors]
         [HttpGet("allDays")]
         public List<Day> Get()
         {
             return _dayRepo.getAll();
         }
-
+        
+        [EnableCors]
         [HttpPut("addPerson")]
         public string AddPerson(string name, string day)
         {
